@@ -9,7 +9,7 @@ function getComputerChoice(){
 
 function getPlayerChoice(){
     let choice = prompt("Choose Rock, Paper, or Scissors: ");
-    choice = choice.toUpperCase(choice !== "ROCK");
+    choice = choice.toUpperCase();
     if (choice === "ROCK" || choice === "PAPER" || choice === "SCISSORS"){
         return choice;
     }
@@ -21,7 +21,10 @@ function getPlayerChoice(){
 function playRound(playerSelection, computerSelection){
     // tie condition
     if (playerSelection === computerSelection){
-        return `You both tie since you both chose ${playerSelection}. Try again.`;
+        console.log(`You both tie since you both chose ${playerSelection}. Try again.`)
+        let playerChoice = getPlayerChoice();
+        let computerChoice = getComputerChoice();
+        return playRound(playerChoice, computerChoice);
     }
     // lose conditions
     else if (playerSelection === "ROCK" && computerSelection === "PAPER"){
@@ -45,6 +48,14 @@ function playRound(playerSelection, computerSelection){
     }
 }
 
-let playerChoice = getPlayerChoice();
-let computerChoice = getComputerChoice();
-console.log(playRound(playerChoice, computerChoice));
+function game(){
+    // amount of rounds
+    for (let round = 1; round <= 5; round++){
+        console.log(`Round ${round}`);
+        let playerChoice = getPlayerChoice();
+        let computerChoice = getComputerChoice();
+        console.log(playRound(playerChoice, computerChoice));
+    }
+}
+
+game();
