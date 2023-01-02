@@ -15,6 +15,7 @@ header{
     justify-content: center;
     align-items: center;
     gap: 50px;
+    flex-wrap: wrap;
 }
 
 .player, .computer{
@@ -29,6 +30,7 @@ header{
     justify-content: center;
     align-items: center;
     gap: 50px;
+    flex-wrap: wrap;
 }
 
 .rock, .paper, .scissor{
