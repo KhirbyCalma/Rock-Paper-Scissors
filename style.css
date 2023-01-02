@@ -9,3 +9,36 @@ header{
     color: white;
     padding: 1rem;
 }
+
+.game{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 50px;
+}
+
+.player, .computer{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.choices{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 50px;
+}
+
+.rock, .paper, .scissor{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.choice-img{
+    height: 125px;
+    width: auto;
+}
