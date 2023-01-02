@@ -3,14 +3,14 @@ function getRandomInt(start, end){
 }
 
 function getComputerChoice(){
-    const choices = ["ROCK", "PAPER", "SCISSORS"];
+    const choices = ["ROCK", "PAPER", "SCISSOR"];
     return choices[getRandomInt(0, choices.length)];
 }
 
 function getPlayerChoice(){
-    let choice = prompt("Choose Rock, Paper, or Scissors: ");
+    let choice = prompt("Choose Rock, Paper, or SCISSOR: ");
     choice = choice.toUpperCase();
-    if (choice === "ROCK" || choice === "PAPER" || choice === "SCISSORS"){
+    if (choice === "ROCK" || choice === "PAPER" || choice === "SCISSOR"){
         return choice;
     }
     // invalid input ask again
@@ -21,29 +21,26 @@ function getPlayerChoice(){
 function playRound(playerSelection, computerSelection){
     // tie condition
     if (playerSelection === computerSelection){
-        console.log(`You both tie since you both chose ${playerSelection}. Try again.`)
-        let playerChoice = getPlayerChoice();
-        let computerChoice = getComputerChoice();
-        return playRound(playerChoice, computerChoice);
+        return `You both tie since you both chose ${playerSelection}. Try again.`;
     }
     // lose conditions
     else if (playerSelection === "ROCK" && computerSelection === "PAPER"){
         return `You lose. ${computerSelection} beats ${playerSelection}.`;
     }
-    else if (playerSelection === "PAPER" && computerSelection === "SCISSORS"){
+    else if (playerSelection === "PAPER" && computerSelection === "SCISSOR"){
         return `You lose. ${computerSelection} beats ${playerSelection}.`;
     }
-    else if (playerSelection === "SCISSORS" && computerSelection === "ROCK"){
+    else if (playerSelection === "SCISSOR" && computerSelection === "ROCK"){
         return `You lose. ${computerSelection} beats ${playerSelection}.`;
     }
     // win conditions
-    else if (playerSelection === "ROCK" && computerSelection === "SCISSORS"){
+    else if (playerSelection === "ROCK" && computerSelection === "SCISSOR"){
         return `You win! ${playerSelection} beats ${computerSelection}.`;
     }
     else if (playerSelection === "PAPER" && computerSelection === "ROCK"){
         return `You win! ${playerSelection} beats ${computerSelection}.`;
     }
-    else if (playerSelection === "SCISSORS" && computerSelection === "PAPER"){
+    else if (playerSelection === "SCISSOR" && computerSelection === "PAPER"){
         return `You win! ${playerSelection} beats ${computerSelection}.`;
     }
 }
@@ -59,3 +56,20 @@ function game(){
 }
 
 // game();
+
+const rockButton = document.getElementById('rock-button');
+const paperButton = document.getElementById('paper-button');
+const scissorButton = document.getElementById('scissor-button');
+const resultText = document.getElementById('results-text')
+
+rockButton.addEventListener('click', () => {
+    resultText.textContent = playRound('ROCK', getComputerChoice());
+});
+
+paperButton.addEventListener('click', () => {
+    resultText.textContent = playRound('PAPER', getComputerChoice());
+});
+
+scissorButton.addEventListener('click', () => {
+    resultText.textContent = playRound('SCISSOR', getComputerChoice());
+});
