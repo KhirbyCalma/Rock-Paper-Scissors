@@ -55,7 +55,7 @@ function playRound(playerSelection, computerSelection){
     }
     // win conditions
     else if ((playerSelection === "ROCK" && computerSelection === "SCISSOR") || 
-            (playerSelection === "PAPER" && computerSelection === "ROCK")
+            (playerSelection === "PAPER" && computerSelection === "ROCK") ||
             (playerSelection === "SCISSOR" && computerSelection === "PAPER")){
         playerScore++;
         return `You win! ${playerSelection} beats ${computerSelection}.`;
