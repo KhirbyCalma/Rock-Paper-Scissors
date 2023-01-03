@@ -1,6 +1,26 @@
 body{
     margin: 0;
-    font-family: 'Roboto', sans-serif;
+    font-family: 'Press Start 2P', cursive;
+}
+
+h1{
+    font-size: 3rem;
+}
+
+h2{
+    font-size: 2rem;
+}
+
+h3{
+    font-size: 1.5rem;
+}
+
+p{
+    font-size: 1rem;
+}
+
+ul{
+    list-style: none;
 }
 
 header{
@@ -8,13 +28,27 @@ header{
     background: black;
     color: white;
     padding: 0.5rem;
-    font-size: 3rem;
 }
 
-.game{
+.results-section{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.numerical-scores{
+    text-align: center;
+}
+
+.result-output{
+    text-align: center;
+}
+
+.game-section{
+    background-color: #FFC83D;
     display: flex;
     justify-content: center;
-    align-items: center;
     gap: 10%;
     flex-wrap: wrap;
 }
@@ -23,39 +57,11 @@ header{
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
-    font-size: 2rem;
 }
 
-.choices{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 10%;
-    flex-wrap: wrap;
-}
-
-.rock, .paper, .scissor{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    font-size: 1rem;;
-}
-
-.choice-img{
-    height: 125px;
-    width: auto;
-}
-
-#results{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    font-size: 2rem;
-}
-
-#results-text{
-    font-size: 1rem;
+footer {
+    text-align: center;
+    background-color: black;
+    color: white;
+    padding: 0.5rem;
 }

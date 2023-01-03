@@ -57,19 +57,19 @@ function game(){
 
 // game();
 
-const rockButton = document.getElementById('rock-button');
-const paperButton = document.getElementById('paper-button');
-const scissorButton = document.getElementById('scissor-button');
-const resultText = document.getElementById('results-text')
+// const rockButton = document.getElementById('rock-button');
+// const paperButton = document.getElementById('paper-button');
+// const scissorButton = document.getElementById('scissor-button');
+// const resultText = document.getElementById('results-text')
 
-rockButton.addEventListener('click', () => {
-    resultText.textContent = playRound('ROCK', getComputerChoice());
-});
+// rockButton.addEventListener('click', () => {
+//     resultText.textContent = playRound('ROCK', getComputerChoice());
+// });
 
-paperButton.addEventListener('click', () => {
-    resultText.textContent = playRound('PAPER', getComputerChoice());
-});
+// paperButton.addEventListener('click', () => {
+//     resultText.textContent = playRound('PAPER', getComputerChoice());
+// });
 
-scissorButton.addEventListener('click', () => {
-    resultText.textContent = playRound('SCISSOR', getComputerChoice());
-});
+// scissorButton.addEventListener('click', () => {
+//     resultText.textContent = playRound('SCISSOR', getComputerChoice());
+// });
