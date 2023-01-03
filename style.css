@@ -1,6 +1,9 @@
 body{
     margin: 0;
     font-family: 'Press Start 2P', cursive;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
 }
 
 h1{
@@ -30,11 +33,18 @@ header{
     padding: 0.5rem;
 }
 
+main{
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+}
+
 .results-section{
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    flex: 1;
 }
 
 .numerical-scores{
@@ -51,6 +61,7 @@ header{
     justify-content: center;
     gap: 10%;
     flex-wrap: wrap;
+    flex: 1;
 }
 
 .player, .computer{
@@ -64,4 +75,5 @@ footer {
     background-color: black;
     color: white;
     padding: 0.5rem;
+    margin-top: auto;
 }
