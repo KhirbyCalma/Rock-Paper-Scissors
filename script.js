@@ -1,3 +1,12 @@
+let playerScore = 0;
+let computerScore = 0; 
+const rockButton = document.getElementById('rock-button');
+const paperButton = document.getElementById('paper-button');
+const scissorButton = document.getElementById('scissor-button');
+const resultText = document.getElementById('result-text')
+const playerScoreText = document.getElementById('player-score');
+const computerScoreText = document.getElementById('computer-score');
+
 function getRandomInt(start, end){
     return Math.floor(Math.random() * (end - start) ) + start;
 }
@@ -25,24 +34,35 @@ function playRound(playerSelection, computerSelection){
     }
     // lose conditions
     else if (playerSelection === "ROCK" && computerSelection === "PAPER"){
+        computerScore++;
         return `You lose. ${computerSelection} beats ${playerSelection}.`;
     }
     else if (playerSelection === "PAPER" && computerSelection === "SCISSOR"){
+        computerScore++;
         return `You lose. ${computerSelection} beats ${playerSelection}.`;
     }
     else if (playerSelection === "SCISSOR" && computerSelection === "ROCK"){
+        computerScore++;
         return `You lose. ${computerSelection} beats ${playerSelection}.`;
     }
     // win conditions
     else if (playerSelection === "ROCK" && computerSelection === "SCISSOR"){
+        playerScore++;
         return `You win! ${playerSelection} beats ${computerSelection}.`;
     }
     else if (playerSelection === "PAPER" && computerSelection === "ROCK"){
+        playerScore++;
         return `You win! ${playerSelection} beats ${computerSelection}.`;
     }
     else if (playerSelection === "SCISSOR" && computerSelection === "PAPER"){
+        playerScore++;
         return `You win! ${playerSelection} beats ${computerSelection}.`;
     }
+}
+
+function updateScores(){
+    playerScoreText.textContent = `Your Score: ${playerScore}`;
+    computerScoreText.textContent = `Computer's Score: ${computerScore}`;
 }
 
 function game(){
@@ -54,22 +74,19 @@ function game(){
         console.log(playRound(playerChoice, computerChoice));
     }
 }
-
 // game();
 
-// const rockButton = document.getElementById('rock-button');
-// const paperButton = document.getElementById('paper-button');
-// const scissorButton = document.getElementById('scissor-button');
-// const resultText = document.getElementById('results-text')
+rockButton.addEventListener('click', () => {
+    resultText.textContent = playRound('ROCK', getComputerChoice());
+    updateScores();
+});
 
-// rockButton.addEventListener('click', () => {
-//     resultText.textContent = playRound('ROCK', getComputerChoice());
-// });
+paperButton.addEventListener('click', () => {
+    resultText.textContent = playRound('PAPER', getComputerChoice());
+    updateScores();
+});
 
-// paperButton.addEventListener('click', () => {
-//     resultText.textContent = playRound('PAPER', getComputerChoice());
-// });
-
-// scissorButton.addEventListener('click', () => {
-//     resultText.textContent = playRound('SCISSOR', getComputerChoice());
-// });
+scissorButton.addEventListener('click', () => {
+    resultText.textContent = playRound('SCISSOR', getComputerChoice());
+    updateScores();
+});
