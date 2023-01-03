@@ -4,6 +4,8 @@ const rockButton = document.getElementById('rock-button');
 const paperButton = document.getElementById('paper-button');
 const scissorButton = document.getElementById('scissor-button');
 const resultText = document.getElementById('result-text')
+const playerMoveText = document.getElementById('player-move-text');
+const computerMoveText = document.getElementById('computer-move-text');
 const playerScoreText = document.getElementById('player-score');
 const computerScoreText = document.getElementById('computer-score');
 
@@ -16,13 +18,58 @@ function getComputerChoice(){
     return choices[getRandomInt(0, choices.length)];
 }
 
+function increaseComputerScore(){
+    computerScore++;
+}
+
+function increasePlayerScore(){
+    playerScore++
+}
+
 function updateScores(){
     playerScoreText.textContent = `Your Score: ${playerScore}`;
     computerScoreText.textContent = `Computer's Score: ${computerScore}`;
 }
 
-function updateResult(playerChoice){
-    resultText.textContent = playRound(playerChoice, getComputerChoice());
+function updateResult(playerMove, computerMove){
+    if (playerMove === computerMove){
+        resultText.textContent = `You both tie since you both chose ${playerMove}. Try again.`;
+    }
+    else if ((playerMove === "ROCK" && computerMove === "PAPER") || 
+            (playerMove === "PAPER" && computerMove === "SCISSOR") ||
+            (playerMove === "SCISSOR" && computerMove === "ROCK")){
+        resultText.textContent = `You lose. ${computerMove} beats ${playerMove}.`;
+    }
+    else if ((playerMove === "ROCK" && computerMove === "SCISSOR") || 
+    (playerMove === "PAPER" && computerMove === "ROCK") ||
+    (playerMove === "SCISSOR" && computerMove === "PAPER")){
+        resultText.textContent = `You win! ${playerMove} beats ${computerMove}.`;
+    }
+}
+
+function updateMoves(playerMove, computerMove){
+    switch(playerMove){
+        case "ROCK":
+            playerMoveText.textContent = `Your move: ${String.fromCodePoint(0x270A)}`
+            break;
+        case "PAPER":
+            playerMoveText.textContent = `Your move: ${String.fromCodePoint(0x270B)}`
+            break;
+        case "SCISSOR":
+            playerMoveText.textContent = `Your move: ${String.fromCodePoint(0x270C)}`
+            break;
+    }
+    switch(computerMove){
+        case "ROCK":
+            computerMoveText.textContent = `Computer's move: ${String.fromCodePoint(0x270A)}`
+            break;
+        case "PAPER":
+            computerMoveText.textContent = `Computer's move: ${String.fromCodePoint(0x270B)}`
+            break;
+        case "SCISSOR":
+            computerMoveText.textContent = `Computer's move: ${String.fromCodePoint(0x270C)}`
+            break;
+    }
 }
 
 function isGameOver(){
@@ -42,29 +89,25 @@ function resetGame(){
 }
 
 function playRound(playerSelection, computerSelection){
-    // tie condition
-    if (playerSelection === computerSelection){
-        return `You both tie since you both chose ${playerSelection}. Try again.`;
-    }
     // lose conditions
-    else if ((playerSelection === "ROCK" && computerSelection === "PAPER") || 
+    if ((playerSelection === "ROCK" && computerSelection === "PAPER") || 
             (playerSelection === "PAPER" && computerSelection === "SCISSOR") ||
             (playerSelection === "SCISSOR" && computerSelection === "ROCK")){
-        computerScore++;
-        return `You lose. ${computerSelection} beats ${playerSelection}.`;
+        increaseComputerScore();
     }
     // win conditions
     else if ((playerSelection === "ROCK" && computerSelection === "SCISSOR") || 
             (playerSelection === "PAPER" && computerSelection === "ROCK") ||
             (playerSelection === "SCISSOR" && computerSelection === "PAPER")){
-        playerScore++;
-        return `You win! ${playerSelection} beats ${computerSelection}.`;
+        increasePlayerScore();
     }
+    updateMoves(playerSelection, computerSelection);
+    updateScores();
+    updateResult(playerSelection, computerSelection);
 }
 
 rockButton.addEventListener('click', () => {
-    updateResult("ROCK");
-    updateScores();
+    playRound("ROCK", getComputerChoice());
     if (isGameOver()){
         resultText.textContent = checkWinner();
         resetGame();
@@ -72,8 +115,7 @@ rockButton.addEventListener('click', () => {
 });
 
 paperButton.addEventListener('click', () => {
-    updateResult("PAPER");
-    updateScores();
+    playRound("PAPER", getComputerChoice());
     if (isGameOver()){
         resultText.textContent = checkWinner();
         resetGame();
@@ -81,8 +123,7 @@ paperButton.addEventListener('click', () => {
 });
 
 scissorButton.addEventListener('click', () => {
-    updateResult("SCISSOR");
-    updateScores();
+    playRound("SCISSOR", getComputerChoice());
     if (isGameOver()){
         resultText.textContent = checkWinner();
         resetGame();
