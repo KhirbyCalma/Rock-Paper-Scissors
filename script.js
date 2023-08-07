@@ -1,18 +1,23 @@
 let playerScore = 0;
 let computerScore = 0; 
-const rockButton = document.getElementById('rock-button');
-const paperButton = document.getElementById('paper-button');
-const scissorButton = document.getElementById('scissor-button');
+const playerMoves = document.querySelectorAll('.player-move');
+playerMoves.forEach( (move) => 
+    move.addEventListener('click', (event) => {
+        playRound(event.target.textContent, getComputerChoice());
+    })
+);
 const resultText = document.getElementById('result-text')
 const playerMoveText = document.getElementById('player-move-text');
 const computerMoveText = document.getElementById('computer-move-text');
 const playerScoreText = document.getElementById('player-score');
 const computerScoreText = document.getElementById('computer-score');
 
+// choose random integer in given range inclusively
 function getRandomInt(start, end){
     return Math.floor(Math.random() * (end - start) ) + start;
 }
 
+// computer generates random move
 function getComputerChoice(){
     const choices = ["ROCK", "PAPER", "SCISSOR"];
     return choices[getRandomInt(0, choices.length)];
@@ -118,15 +123,3 @@ function playRound(playerSelection, computerSelection){
     updateScores();
     updateResult(playerSelection, computerSelection);
 }
-
-rockButton.addEventListener('click', () => {
-    playRound("ROCK", getComputerChoice());
-});
-
-paperButton.addEventListener('click', () => {
-    playRound("PAPER", getComputerChoice());
-});
-
-scissorButton.addEventListener('click', () => {
-    playRound("SCISSOR", getComputerChoice());
-});
