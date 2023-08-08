@@ -5,7 +5,8 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Rock, Paper, Scissors</title>
-        <link rel="stylesheet" href="style.css">
+        <link rel="stylesheet" href="./styles/reset.css">
+        <link rel="stylesheet" href="./styles/style.css">
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
@@ -13,40 +14,32 @@
     </head>
     <body>
         <header>
-            <h1>Rock&#9994;, Paper&#9995;, Scissors&#9996;!</h1>
+            <h1>ROCK&#9994;, PAPER&#9995;, SCISSORS&#9996;!</h1>
         </header>
         <main>
-            <section class="results-section">
-                <h2>Results</h2>
-                <section class="numerical-scores">
-                    <h3 id="player-score">Your Score: 0</h3>
-                    <h3 id="computer-score">Computer's Score: 0</h3>                      
-                </section>
-                <section class="result-output">
-                    <p id="result-text">Select a move to start the game! First to 5 wins.</p>
-                </section>
+            <section class="player">
+                <h2>PLAYER</h2>
+                <h3 id="player-move">&#10067;</h2>   
+                <h3 id="player-score">0</h3>
             </section>
-            <section class="game-section">
-                <section class="moves-section">
-                    <section class="player-move-output">
-                        <h2 id="player-move-text">Your move: &#10067;</h2>                    
-                    </section>
-                    <section class="computer-move-output">
-                        <h2 id="computer-move-text">Computer's move: &#10067;</h2>
-                    </section>
-                </section>
-                <section class="player">
-                    <h2>Move Choices:</h2>
-                    <section class="choices">
-                        <button type="button" class="player-move">ROCK</button>
-                        <button type="button" class="player-move">PAPER</button>
-                        <button type="button" class="player-move">SCISSOR</button>
-                    </section>
-                </section>
+
+            <section class="move-and-result">
+                <h2 id="result">First to 5 wins.</h2>
+                <div class="player-moveset">
+                    <button type="button" class="player-move-selection">&#9994;</button>
+                    <button type="button" class="player-move-selection">&#9995;</button>
+                    <button type="button" class="player-move-selection">&#9996;</button>
+                </div>
+            </section>
+
+            <section class="computer">
+                <h2>COMPUTER</h2>
+                <h3 id="computer-move">&#10067;</h2>
+                <h3 id="computer-score">0</h3>    
             </section>
         </main>
         <footer>
-            <p>Copyright &copy; Khirby Calma, <script>document.write(new Date().getFullYear());</script></p>
+            Copyright &copy; Khirby Calma, <script>document.write(new Date().getFullYear());</script>
         </footer>
     </body>
 </html>
