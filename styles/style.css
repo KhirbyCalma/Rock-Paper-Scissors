@@ -30,10 +30,21 @@ main{
     gap: 3rem;
 }
 
+canvas#confetti-effect {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    top: 0px;
+    left: 0px;
+    z-index: 1000;
+    pointer-events: none;
+}
+  
 section.player, section.computer, section.move-and-result{
     display: flex;
     flex-direction: column;
     flex: 2;
+    padding: 2rem 4rem;
     gap: 3rem;
     font-size: 2rem;
     align-items: center;
@@ -45,6 +56,16 @@ section.move-and-result div.player-moveset {
     display: flex;
     justify-content: center;
     gap: 3rem;
+}
+
+section.player {
+    background-color: blue;
+    color: white;
+}
+
+section.computer {
+    background-color: red;
+    color: white;
 }
 
 /* Button Style 30: https://getcssscan.com/css-buttons-examples */

@@ -1,3 +1,7 @@
+// external | https://www.npmjs.com/package/js-confetti
+const confettiEffect = document.getElementById("confetti-effect");
+const jsConfetti = new JSConfetti();
+
 // scores
 let playerScore = 0;
 let computerScore = 0; 
@@ -122,6 +126,7 @@ function updateResult(playerMove, computerMove){
     (playerMove === "SCISSOR" && computerMove === "PAPER")){
         if (isGameOver()){
             resultText.textContent = `You won ${playerScore}-${computerScore}! Select a move to restart the game! First to 5 wins.`;
+            jsConfetti.addConfetti();
             resetGame();
         }
         else{
