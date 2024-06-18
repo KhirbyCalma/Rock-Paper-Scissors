@@ -10,7 +10,7 @@ function getComputerChoice() {
             return 'PAPER';
         // if 2, return scissors
         case 2: 
-            return 'SCISSOR';
+            return 'SCISSORS';
         default:
             return 'ERROR';
     }
@@ -44,3 +44,7 @@ function getHumanChoice() {
 
 let humanScore = 0;
 let computerScore = 0;
+
+// if human choice and computer choice the same, tie
+// if human choice beats computer choice, output win message and increment human score
+// if computer choice beats computer choice, output lose message and increment computer score
