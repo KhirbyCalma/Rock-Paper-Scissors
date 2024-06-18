@@ -26,6 +26,18 @@ for (let i = 1; i <= 10; i++) {
     console.log(`${i}. ${getComputerChoice()}`);
 }
 
-// ask user to choose rock, paper, or scissors and store in variable
-// while user's choice is not rock, paper, or scissors, ask user again until valid choice
-// return user's choice 
+function getHumanChoice() {
+    // ask user to choose rock, paper, or scissors and store in variable
+    let humanChoice = prompt("Rock, Paper, or Scissors?");
+    // while user's choice is not rock, paper, or scissors, ask user again until valid choice
+    while (humanChoice === null || (humanChoice.toUpperCase() !== 'ROCK' && humanChoice.toUpperCase() !== 'PAPER' && humanChoice.toUpperCase() !== 'SCISSORS')) {
+        humanChoice = prompt("Invalid choice. Rock, Paper, or Scissors?");
+    }
+    // return user's choice 
+    return humanChoice.toUpperCase();
+}
+
+// test to see if all choices are outputted by computer choice
+for (let i = 1; i <= 4; i++) {
+    console.log(`${i}. ${getHumanChoice()}`);
+}
