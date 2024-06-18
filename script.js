@@ -66,8 +66,16 @@ function playRound(humanChoice, computerChoice) {
 }
 
 // test to see if playing a round follows the rules of rock, paper, scissors
-for (let i = 1; i <= 5; i++) {
-    playRound(getHumanChoice(), getComputerChoice());
-}
-console.log(`Human's Score: ${humanScore}`);
-console.log(`Computer's Score: ${computerScore}`);
+// for (let i = 1; i <= 5; i++) {
+//     playRound(getHumanChoice(), getComputerChoice());
+// }
+// console.log(`Human's Score: ${humanScore}`);
+// console.log(`Computer's Score: ${computerScore}`);
+
+// initialize human score and computer score
+// loop 5 times, simulating 5 rounds
+// get human choice and computer choice
+// play round with choices
+// if returns 0, means tie and output tie message
+// if returns 1, means human wins and output win message
+// if returns -1, means computer wins and output lose message
