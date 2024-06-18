@@ -22,9 +22,9 @@ function getRandomInteger(min, max) {
 }
 
 // test to see if all choices are outputted by computer choice
-for (let i = 1; i <= 10; i++) {
-    console.log(`${i}. ${getComputerChoice()}`);
-}
+// for (let i = 1; i <= 10; i++) {
+//     console.log(`${i}. ${getComputerChoice()}`);
+// }
 
 function getHumanChoice() {
     // ask user to choose rock, paper, or scissors and store in variable
@@ -38,6 +38,9 @@ function getHumanChoice() {
 }
 
 // test to see if all choices are outputted by computer choice
-for (let i = 1; i <= 4; i++) {
-    console.log(`${i}. ${getHumanChoice()}`);
-}
+// for (let i = 1; i <= 4; i++) {
+//     console.log(`${i}. ${getHumanChoice()}`);
+// }
+
+let humanScore = 0;
+let computerScore = 0;
