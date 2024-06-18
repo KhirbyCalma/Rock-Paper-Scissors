@@ -25,3 +25,7 @@ function getRandomInteger(min, max) {
 for (let i = 1; i <= 10; i++) {
     console.log(`${i}. ${getComputerChoice()}`);
 }
+
+// ask user to choose rock, paper, or scissors and store in variable
+// while user's choice is not rock, paper, or scissors, ask user again until valid choice
+// return user's choice 
