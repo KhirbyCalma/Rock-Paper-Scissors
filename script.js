@@ -45,6 +45,29 @@ function getHumanChoice() {
 let humanScore = 0;
 let computerScore = 0;
 
-// if human choice and computer choice the same, tie
-// if human choice beats computer choice, output win message and increment human score
-// if computer choice beats computer choice, output lose message and increment computer score
+function playRound(humanChoice, computerChoice) {
+    // if human choice and computer choice the same, tie
+    if (humanChoice === computerChoice) {
+        console.log(`You tie. You both chose ${humanChoice}.`);
+    } 
+    // if human choice beats computer choice, output win message and increment human score
+    else if ( (humanChoice === 'ROCK' && computerChoice === 'SCISSORS') ||
+                (humanChoice === 'PAPER' && computerChoice === 'ROCK') ||
+                (humanChoice === 'SCISSORS' && computerChoice === 'PAPER')
+    )  {
+        console.log(`You win! ${humanChoice} beats ${computerChoice}.`);
+        humanScore++;
+    }
+    // if computer choice beats computer choice, output lose message and increment computer score
+    else {
+        console.log(`You lose. ${computerChoice} beats ${humanChoice}.`);
+        computerScore++;
+    }
+}
+
+// test to see if playing a round follows the rules of rock, paper, scissors
+for (let i = 1; i <= 5; i++) {
+    playRound(getHumanChoice(), getComputerChoice());
+}
+console.log(`Human's Score: ${humanScore}`);
+console.log(`Computer's Score: ${computerScore}`);
