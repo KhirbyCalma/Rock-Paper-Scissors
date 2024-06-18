@@ -42,26 +42,21 @@ function getHumanChoice() {
 //     console.log(`${i}. ${getHumanChoice()}`);
 // }
 
-let humanScore = 0;
-let computerScore = 0;
-
 function playRound(humanChoice, computerChoice) {
-    // if human choice and computer choice the same, tie
+    // if human choice and computer choice the same, return 0 to indicate tie
     if (humanChoice === computerChoice) {
-        console.log(`You tie. You both chose ${humanChoice}.`);
+        return 0;
     } 
-    // if human choice beats computer choice, output win message and increment human score
+    // if human choice beats computer choice, return 1 to indicate output win message and increment human score
     else if ( (humanChoice === 'ROCK' && computerChoice === 'SCISSORS') ||
                 (humanChoice === 'PAPER' && computerChoice === 'ROCK') ||
                 (humanChoice === 'SCISSORS' && computerChoice === 'PAPER')
     )  {
-        console.log(`You win! ${humanChoice} beats ${computerChoice}.`);
-        humanScore++;
+       return 1;
     }
-    // if computer choice beats computer choice, output lose message and increment computer score
+    // if computer choice beats computer choice, return -1 to indicate output lose message and increment computer score
     else {
-        console.log(`You lose. ${computerChoice} beats ${humanChoice}.`);
-        computerScore++;
+        return -1;
     }
 }
 
@@ -72,10 +67,38 @@ function playRound(humanChoice, computerChoice) {
 // console.log(`Human's Score: ${humanScore}`);
 // console.log(`Computer's Score: ${computerScore}`);
 
-// initialize human score and computer score
-// loop 5 times, simulating 5 rounds
-// get human choice and computer choice
-// play round with choices
-// if returns 0, means tie and output tie message
-// if returns 1, means human wins and output win message
-// if returns -1, means computer wins and output lose message
+function playGame() {
+    // initialize human score and computer score
+    let humanScore = 0;
+    let computerScore = 0;
+    // loop 5 times, simulating 5 rounds
+    for (let i = 1; i <= 5; i++) {
+        // get human choice and computer choice
+        let humanChoice = getHumanChoice();
+        let computerChoice = getComputerChoice();
+        // play round with choices
+        let roundOutcome = playRound(humanChoice, computerChoice);
+        switch (roundOutcome) {
+            // if returns 0, means tie and output tie message
+            case 0: 
+                console.log(`You tie. You both chose ${humanChoice}.`);
+                break;
+            // if returns 1, means human wins and output win message
+            case 1:
+                console.log(`You win! ${humanChoice} beats ${computerChoice}.`);
+                humanScore++;
+                break;
+            // if returns -1, means computer wins and output lose message
+            case -1:  
+                console.log(`You lose. ${computerChoice} beats ${humanChoice}.`);
+                computerScore++;
+                break;
+            default:
+                console.log(`ERROR!`);
+        }
+    }
+    console.log(`Human's Score: ${humanScore}`);
+    console.log(`Computer's Score: ${computerScore}`);
+}
+
+playGame();
