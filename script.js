@@ -102,7 +102,7 @@ listOfHumanActions.forEach((actionBtn) => {
                 computerScoreTextOutput.textContent = `Computer: ${++computerScore}`;
                 break;
             default:
-                console.log(`ERROR!`);
+                roundOutcomeTextOutput.textContent = `ERROR!`;
         }
     });
 });
