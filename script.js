@@ -101,4 +101,4 @@ function playGame() {
     console.log(`Computer's Score: ${computerScore}`);
 }
 
-playGame();
+// playGame();
