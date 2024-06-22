@@ -21,17 +21,6 @@ function getRandomInteger(min, max) {
     return Math.floor(Math.random() * (max - min + 1)) + min;
 }
 
-function getHumanChoice() {
-    // ask user to choose rock, paper, or scissors and store in variable
-    let humanChoice = prompt("Rock, Paper, or Scissors?");
-    // while user's choice is not rock, paper, or scissors, ask user again until valid choice
-    while (humanChoice === null || (humanChoice.toUpperCase() !== 'ROCK' && humanChoice.toUpperCase() !== 'PAPER' && humanChoice.toUpperCase() !== 'SCISSORS')) {
-        humanChoice = prompt("Invalid choice. Rock, Paper, or Scissors?");
-    }
-    // return user's choice 
-    return humanChoice.toUpperCase();
-}
-
 function playRound(humanChoice, computerChoice) {
     // if human choice and computer choice the same, return 0 to indicate tie
     if (humanChoice === computerChoice) {
