@@ -21,11 +21,6 @@ function getRandomInteger(min, max) {
     return Math.floor(Math.random() * (max - min + 1)) + min;
 }
 
-// test to see if all choices are outputted by computer choice
-// for (let i = 1; i <= 10; i++) {
-//     console.log(`${i}. ${getComputerChoice()}`);
-// }
-
 function getHumanChoice() {
     // ask user to choose rock, paper, or scissors and store in variable
     let humanChoice = prompt("Rock, Paper, or Scissors?");
@@ -36,11 +31,6 @@ function getHumanChoice() {
     // return user's choice 
     return humanChoice.toUpperCase();
 }
-
-// test to see if all choices are outputted by computer choice
-// for (let i = 1; i <= 4; i++) {
-//     console.log(`${i}. ${getHumanChoice()}`);
-// }
 
 function playRound(humanChoice, computerChoice) {
     // if human choice and computer choice the same, return 0 to indicate tie
@@ -59,49 +49,6 @@ function playRound(humanChoice, computerChoice) {
         return -1;
     }
 }
-
-// test to see if playing a round follows the rules of rock, paper, scissors
-// for (let i = 1; i <= 5; i++) {
-//     playRound(getHumanChoice(), getComputerChoice());
-// }
-// console.log(`Human's Score: ${humanScore}`);
-// console.log(`Computer's Score: ${computerScore}`);
-
-// function playGame() {
-//     // initialize human score and computer score
-//     let humanScore = 0;
-//     let computerScore = 0;
-//     // loop 5 times, simulating 5 rounds
-//     for (let i = 1; i <= 5; i++) {
-//         // get human choice and computer choice
-//         let humanChoice = getHumanChoice();
-//         let computerChoice = getComputerChoice();
-//         // play round with choices
-//         let roundOutcome = playRound(humanChoice, computerChoice);
-//         switch (roundOutcome) {
-//             // if returns 0, means tie and output tie message
-//             case 0: 
-//                 console.log(`You tie. You both chose ${humanChoice}.`);
-//                 break;
-//             // if returns 1, means human wins and output win message
-//             case 1:
-//                 console.log(`You win! ${humanChoice} beats ${computerChoice}.`);
-//                 humanScore++;
-//                 break;
-//             // if returns -1, means computer wins and output lose message
-//             case -1:  
-//                 console.log(`You lose. ${computerChoice} beats ${humanChoice}.`);
-//                 computerScore++;
-//                 break;
-//             default:
-//                 console.log(`ERROR!`);
-//         }
-//     }
-//     console.log(`Human's Score: ${humanScore}`);
-//     console.log(`Computer's Score: ${computerScore}`);
-// }
-
-// playGame();
 
 // helper function for getting user's intended action
 function emojiToAction(emoji) {
