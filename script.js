@@ -67,38 +67,95 @@ function playRound(humanChoice, computerChoice) {
 // console.log(`Human's Score: ${humanScore}`);
 // console.log(`Computer's Score: ${computerScore}`);
 
-function playGame() {
-    // initialize human score and computer score
-    let humanScore = 0;
-    let computerScore = 0;
-    // loop 5 times, simulating 5 rounds
-    for (let i = 1; i <= 5; i++) {
-        // get human choice and computer choice
-        let humanChoice = getHumanChoice();
+// function playGame() {
+//     // initialize human score and computer score
+//     let humanScore = 0;
+//     let computerScore = 0;
+//     // loop 5 times, simulating 5 rounds
+//     for (let i = 1; i <= 5; i++) {
+//         // get human choice and computer choice
+//         let humanChoice = getHumanChoice();
+//         let computerChoice = getComputerChoice();
+//         // play round with choices
+//         let roundOutcome = playRound(humanChoice, computerChoice);
+//         switch (roundOutcome) {
+//             // if returns 0, means tie and output tie message
+//             case 0: 
+//                 console.log(`You tie. You both chose ${humanChoice}.`);
+//                 break;
+//             // if returns 1, means human wins and output win message
+//             case 1:
+//                 console.log(`You win! ${humanChoice} beats ${computerChoice}.`);
+//                 humanScore++;
+//                 break;
+//             // if returns -1, means computer wins and output lose message
+//             case -1:  
+//                 console.log(`You lose. ${computerChoice} beats ${humanChoice}.`);
+//                 computerScore++;
+//                 break;
+//             default:
+//                 console.log(`ERROR!`);
+//         }
+//     }
+//     console.log(`Human's Score: ${humanScore}`);
+//     console.log(`Computer's Score: ${computerScore}`);
+// }
+
+// playGame();
+
+// helper function for getting user's intended action
+function emojiToAction(emoji) {
+    let emojiAsHex = emoji.codePointAt(0).toString(16);
+    switch (emojiAsHex) {
+        case ("270a"):
+            return "ROCK";
+        case ("1f590"):
+            return "PAPER";
+        case ("270c"):
+            return "SCISSORS";
+        default:
+            return 'ERROR';
+    }
+}
+
+// initialize scores
+let humanScore = 0;
+let computerScore = 0;
+
+// initialize score text output
+const humanScoreTextOutput = document.querySelector(".human .score-text-output");
+const computerScoreTextOutput = document.querySelector(".computer .score-text-output");
+
+// initialize round outcome text output
+const roundOutcomeTextOutput = document.querySelector(".round-outcome-text-output");
+
+const listOfHumanActions = document.querySelectorAll(".human-actions button.action");
+listOfHumanActions.forEach((actionBtn) => {
+    // user presses action button
+    actionBtn.addEventListener("click", (event) => {
+        // get the user's intended action
+        let humanChoice = emojiToAction(event.target.textContent);
+        // get the computer's action
         let computerChoice = getComputerChoice();
-        // play round with choices
+        // play round
         let roundOutcome = playRound(humanChoice, computerChoice);
         switch (roundOutcome) {
             // if returns 0, means tie and output tie message
             case 0: 
-                console.log(`You tie. You both chose ${humanChoice}.`);
+                roundOutcomeTextOutput.textContent = `You tie. You both chose ${humanChoice}.`;
                 break;
             // if returns 1, means human wins and output win message
             case 1:
-                console.log(`You win! ${humanChoice} beats ${computerChoice}.`);
-                humanScore++;
+                roundOutcomeTextOutput.textContent = `You win! ${humanChoice} beats ${computerChoice}.`;
+                humanScoreTextOutput.textContent = `Human: ${++humanScore}`;
                 break;
             // if returns -1, means computer wins and output lose message
             case -1:  
-                console.log(`You lose. ${computerChoice} beats ${humanChoice}.`);
-                computerScore++;
+                roundOutcomeTextOutput.textContent = `You lose. ${computerChoice} beats ${humanChoice}.`;
+                computerScoreTextOutput.textContent = `Computer: ${++computerScore}`;
                 break;
             default:
                 console.log(`ERROR!`);
         }
-    }
-    console.log(`Human's Score: ${humanScore}`);
-    console.log(`Computer's Score: ${computerScore}`);
-}
-
-// playGame();
+    });
+});
