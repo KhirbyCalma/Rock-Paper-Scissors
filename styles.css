@@ -1,0 +1,33 @@
+#game-outcome-modal-container {
+    background-color: rgba(0, 0, 0, 0.2);
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* hides modal initially and allows to click main page instead of modal */
+    opacity: 0;
+    pointer-events: none;
+}
+
+#game-outcome-modal-container.show {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+#game-outcome-modal {
+    background-color: white;
+}
+
+#game-outcome-modal .footer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#game-outcome-modal .footer button.play-again {
+    cursor: pointer;
+}

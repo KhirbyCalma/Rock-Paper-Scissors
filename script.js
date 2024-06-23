@@ -39,20 +39,62 @@ function playRound(humanChoice, computerChoice) {
     }
 }
 
+function resetGame() {
+    // reset scores
+    humanScore = 0;
+    computerScore = 0;
+    // reset action output texts
+    humanActionTextOutput.textContent = String.fromCodePoint(0x2753);
+    computerActionTextOutput.textContent = String.fromCodePoint(0x2753);
+    // reset score output texts
+    humanScoreTextOutput.textContent = `Human: ${humanScore}`;
+    computerScoreTextOutput.textContent = `Computer: ${computerScore}`;
+    // reset round outcome output text
+    roundOutcomeTextOutput.textContent = 'Select an action to start. First to 5 wins!';
+}
+
 // helper function for getting user's intended action
 function emojiToAction(emoji) {
     let emojiAsHex = emoji.codePointAt(0).toString(16);
     switch (emojiAsHex) {
-        case ("270a"):
+        case ('1f44a'):
             return "ROCK";
-        case ("1f590"):
+        case ('1f44b'):
             return "PAPER";
-        case ("270c"):
+        case ('270c'):
             return "SCISSORS";
         default:
             return 'ERROR';
     }
 }
+
+// helper function for turning user's intended action to emoji for action text output
+function actionToEmoji(action) {
+    switch (action) {
+        case ("ROCK"):
+            return String.fromCodePoint(0x1f44a);
+        case ("PAPER"):
+            return String.fromCodePoint(0x1f44b);
+        case ("SCISSORS"):
+            return String.fromCodePoint(0x270c);
+        default:
+            return "ERROR"; 
+    }
+}
+
+// initialize modal behavior
+const gameOutcomeModalContainer = document.getElementById("game-outcome-modal-container");
+const playAgainBtn = document.querySelector("#game-outcome-modal .footer button.play-again");
+playAgainBtn.addEventListener('click', () => {
+    // reset game
+    resetGame();
+    // make modal invisible
+    gameOutcomeModalContainer.classList.remove("show")
+});
+
+// initialize action text outputs
+const humanActionTextOutput = document.querySelector(".human .action-text-output");
+const computerActionTextOutput = document.querySelector(".computer .action-text-output");
 
 // initialize scores
 let humanScore = 0;
@@ -75,6 +117,10 @@ listOfHumanActions.forEach((actionBtn) => {
         let computerChoice = getComputerChoice();
         // play round
         let roundOutcome = playRound(humanChoice, computerChoice);
+        // update actions visually
+        humanActionTextOutput.textContent = actionToEmoji(humanChoice);
+        computerActionTextOutput.textContent = actionToEmoji(computerChoice);
+        // update text outputs
         switch (roundOutcome) {
             // if returns 0, means tie and output tie message
             case 0: 
@@ -92,6 +138,10 @@ listOfHumanActions.forEach((actionBtn) => {
                 break;
             default:
                 roundOutcomeTextOutput.textContent = `ERROR!`;
+        }
+        // if any score reaches five, announce game outcome with game outcome modal
+        if (humanScore === 5 || computerScore === 5) {
+            gameOutcomeModalContainer.classList.add("show");
         }
     });
 });
