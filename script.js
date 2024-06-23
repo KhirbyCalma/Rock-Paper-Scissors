@@ -84,7 +84,8 @@ function actionToEmoji(action) {
 
 // initialize modal behavior
 const gameOutcomeModalContainer = document.getElementById("game-outcome-modal-container");
-const playAgainBtn = document.querySelector("#game-outcome-modal .footer button.play-again");
+const gameOutcomeTextOutput = document.querySelector("#game-outcome-modal main .game-outcome-text-output");
+const playAgainBtn = document.querySelector("#game-outcome-modal footer button.play-again");
 playAgainBtn.addEventListener('click', () => {
     // reset game
     resetGame();
@@ -124,16 +125,16 @@ listOfHumanActions.forEach((actionBtn) => {
         switch (roundOutcome) {
             // if returns 0, means tie and output tie message
             case 0: 
-                roundOutcomeTextOutput.textContent = `You tie. You both chose ${humanChoice}.`;
+                roundOutcomeTextOutput.textContent = `It is a tie. You both chose ${humanChoice}.`;
                 break;
             // if returns 1, means human wins and output win message
             case 1:
-                roundOutcomeTextOutput.textContent = `You win! ${humanChoice} beats ${computerChoice}.`;
+                roundOutcomeTextOutput.textContent = `You win! Your ${humanChoice} beats the computer's ${computerChoice}.`;
                 humanScoreTextOutput.textContent = `Human: ${++humanScore}`;
                 break;
             // if returns -1, means computer wins and output lose message
             case -1:  
-                roundOutcomeTextOutput.textContent = `You lose. ${computerChoice} beats ${humanChoice}.`;
+                roundOutcomeTextOutput.textContent = `You lose. The computer's ${computerChoice} beats your ${humanChoice}.`;
                 computerScoreTextOutput.textContent = `Computer: ${++computerScore}`;
                 break;
             default:
@@ -141,6 +142,11 @@ listOfHumanActions.forEach((actionBtn) => {
         }
         // if any score reaches five, announce game outcome with game outcome modal
         if (humanScore === 5 || computerScore === 5) {
+            if (humanScore === 5) {
+                gameOutcomeTextOutput.textContent = 'You won the game!';
+            } else {
+                gameOutcomeTextOutput.textContent = 'You lost the game.';
+            }
             gameOutcomeModalContainer.classList.add("show");
         }
     });
