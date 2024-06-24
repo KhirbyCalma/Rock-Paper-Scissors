@@ -13,16 +13,34 @@ body {
     flex-direction: column;
 }
 
+header, main, footer {
+    padding: 24px 128px;
+}
+
 /* HEADER */
 header {
     background-color: #353839;
     color: white;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+header h1 {
+    font-size: xx-large;
+    font-weight: bold;
+}
+
+header p strong{
+    font-weight: bold;
 }
 
 /* FOOTER */
 footer {
     background-color: #353839;
     color: white;
+    text-align: center;
 }
 
 /* MAIN CONTENT */
