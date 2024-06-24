@@ -113,7 +113,7 @@ section.human-actions button.action:hover {
 
 /* ROUND OUTCOME */
 section.round-outcome .round-outcome-text-output {
-    font-size: large;
+    font-size: x-large;
 }
 
 /* GAME OUTCOME MODAL */
