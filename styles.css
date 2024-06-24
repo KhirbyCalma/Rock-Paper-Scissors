@@ -13,8 +13,53 @@ body {
     flex-direction: column;
 }
 
+/* HEADER */
+header {
+    background-color: #353839;
+    color: white;
+}
+
+/* FOOTER */
+footer {
+    background-color: #353839;
+    color: white;
+}
+
+/* MAIN CONTENT */
 main {
     flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 24px;
+}
+
+/* VISUAL ACTIONS AND SCORES */
+section.actions-and-scores {
+    display: flex;
+    gap: 48px;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+section.actions-and-scores .human, 
+section.actions-and-scores .computer {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    align-items: center;
+}
+
+/* HUMAN ACTION BUTTONS */
+section.human-actions {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+}
+
+section.human-actions button.action {
+    cursor: pointer;
 }
 
 /* GAME OUTCOME MODAL */
@@ -42,12 +87,12 @@ main {
     background-color: white;
 }
 
-#game-outcome-modal .footer {
+#game-outcome-modal footer {
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
-#game-outcome-modal .footer button.play-again {
+#game-outcome-modal footer button.play-again {
     cursor: pointer;
 }
