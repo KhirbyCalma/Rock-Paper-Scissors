@@ -84,8 +84,8 @@ function actionToEmoji(action) {
 
 // initialize modal behavior
 const gameOutcomeModalContainer = document.getElementById("game-outcome-modal-container");
-const gameOutcomeTextOutput = document.querySelector("#game-outcome-modal main .game-outcome-text-output");
-const playAgainBtn = document.querySelector("#game-outcome-modal footer button.play-again");
+const gameOutcomeTextOutput = document.querySelector("#game-outcome-modal .game-outcome-text-output");
+const playAgainBtn = document.querySelector("#game-outcome-modal button.play-again");
 playAgainBtn.addEventListener('click', () => {
     // reset game
     resetGame();
